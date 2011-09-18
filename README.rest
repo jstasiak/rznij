@@ -11,6 +11,8 @@ Notes
 * latest development versions of gevent-websocket and slightly patched gevent-socketio packages are included in repository. (reason: stable version of gevent-socketio has only socket.io 0.6 support and development version is: a) not working without patching and b) not yet in PyPI.)
 * Application has to be run by run.py script because of gevent monkey patching and running gevent-socketio server instead of Django development server
 * Currently website is in Polish, translation in progress ;)
+* shared static files are in static_common directory, all static files have to be collected by manage.py collectstatic command
+* remember to fill local_settings.py file (template in local_settings.py.template file)
 
 
 Author
