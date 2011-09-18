@@ -1,0 +1,20 @@
+# -*- coding: utf-8 -*-
+
+# Ten plik należy skopiować do settings_local.py i wypełnić zgodnie z potrzebami
+# Będzie wykonywany w kontekście settings.py, a więc można zrobić np.
+# INSTALLED_APPS += ('django.contrib.auth',) lub w inny sposób wykorzystywać zmienne
+# definiowane w settings.py
+
+DATABASES['default'] = {
+    'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+    'NAME': '',                      # Or path to database file if using sqlite3.
+    'USER': '',                      # Not used with sqlite3.
+    'PASSWORD': '',                  # Not used with sqlite3.
+    'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+    'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+}
+
+# Wypełnić losowymi danymi
+SECRET_KEY = ''
+
+# SERVER_ADDRESS = 'host.adddress[:port]'
