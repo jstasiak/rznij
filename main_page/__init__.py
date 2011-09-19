@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 
+from django.conf import settings
+from django.core.validators import URLValidator
+
 from .models import Shortcut
 from realtime.events import EventDispatcher
 from realtime.util import failure, success
@@ -18,17 +21,18 @@ def handle_create_shortcut(event):
 
     shortcut = data.get('shortcut', '')
     if shortcut and not Shortcut.is_available(shortcut):
-        event.ack(failure(message = _('Skrót {0!r} jest juz zajety').format(shortcut)))
+        event.ack(failure(message = 'Skrót {0!r} jest juz zajety'.format(shortcut)))
         return
 
     url = data.get('url')
     if not url.startswith('http'):
         url = 'http://' + url
 
+    print(url)
     try:
         URLValidator()(url)
     except:
-        event.ack(failure(message = _('Adres {0!r} jest niepoprawnym URL-em').format(url)))
+        event.ack(failure(message = 'Adres {0!r} jest niepoprawnym URL-em'.format(url)))
         return
 
     shortcut = Shortcut(shortcut = shortcut, url = url)
