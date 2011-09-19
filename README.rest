@@ -2,15 +2,16 @@
 How to run
 ==========
 
-# Make sure that requirements are installed:
+#. Make sure that requirements are installed:
 
  * gevent >= 0.13.4
  * Python 2.x >= 2.7
-# download code (clone with --recursive option to download submodule(s) too)
-# Copy local_settings.py.template to local_settings.py and change variables as needed
-# manage.py collectstatic
-# manage.py syncdb
-# run.py
+
+2. download code (clone with --recursive option to download submodule(s) too)
+#. Copy local_settings.py.template to local_settings.py and change variables as needed
+#. manage.py collectstatic
+#. manage.py syncdb
+#. run.py
 
 Notes
 =====
