@@ -37,7 +37,6 @@ class Connection(object):
             transaction.commit()
 
             if message:
-                print('{0} received: {1}'.format(socket.session.session_id, message))
                 self.handle_message(message)
             else:
                 break

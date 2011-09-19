@@ -1,0 +1,3 @@
+[submodule "libraries/gevent-socketio"]
+	path = libraries/gevent-socketio
+	url = git@github.com:jstasiak/gevent-socketio.git

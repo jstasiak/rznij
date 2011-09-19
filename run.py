@@ -3,8 +3,12 @@
 from gevent import monkey
 monkey.patch_all()
 
+from os.path import abspath, dirname, join
+PROJECT_ROOT = abspath(dirname(__file__))
+
 import sys
-sys.path.insert(0, 'libraries')
+sys.path.insert(0, join(PROJECT_ROOT, 'libraries'))
+sys.path.insert(0, join(PROJECT_ROOT, 'libraries', 'gevent-socketio'))
 
 from psyco_gevent import make_psycopg_green
 make_psycopg_green()

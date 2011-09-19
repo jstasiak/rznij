@@ -27,7 +27,6 @@ class EventDispatcher(object):
             handler(event)
 
 
-
 class Event(object):
     def __init__(self, connection, data):
         self.acknowledged = False

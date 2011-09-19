@@ -1,14 +1,23 @@
 
-Requirements
-============
+How to run
+==========
 
-* latest gevent required
-* Python 2.7 (Python 2.6 probably would be ok too)
+# Make sure that requirements are installed:
+
+ * gevent >= 0.13.4
+ * Python 2.x >= 2.7
+# download code (clone with --recursive option to download submodule(s) too)
+# Copy local_settings.py.template to local_settings.py and change variables as needed
+# manage.py collectstatic
+# manage.py syncdb
+# run.py
 
 Notes
 =====
 
-* latest development versions of gevent-websocket and slightly patched gevent-socketio packages are included in repository. (reason: stable version of gevent-socketio has only socket.io 0.6 support and development version is: a) not working without patching and b) not yet in PyPI.)
+
+* latest gevent-websocket included in libraries directory
+* remember to pull submodule gevent-socketio when cloning or manually later (!). This project will work only with this specific version of gevent-socketio
 * Application has to be run by run.py script because of gevent monkey patching and running gevent-socketio server instead of Django development server
 * Currently website is in Polish, translation in progress ;)
 * shared static files are in static_common directory, all static files have to be collected by manage.py collectstatic command
@@ -18,4 +27,4 @@ Notes
 Author
 ======
 
-Jakub Stasiak <kuba.stasiak@gmail.com>
+Jakub Stasiak <kuba.stasiak at gmail.com>
