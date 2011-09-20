@@ -1,28 +1,44 @@
+Requirements
+============
 
-How to run
-==========
+* Make sure Python2.7 with setuptools is installed
 
-#. Make sure that requirements are installed:
+Introduction
+============
 
- * gevent >= 0.13.4
- * Python 2.x >= 2.7
+Setup environment
+-----------------
 
-2. download code (clone with --recursive option to download submodule(s) too)
-#. Copy local_settings.py.template to local_settings.py and change variables as needed
-#. manage.py collectstatic
-#. manage.py syncdb
-#. run.py
+#. git clone git://github.com/jstasiak/rznij.git
+#. easy_install pip
+#. pip install virtualenv
+#. cd rznij
+#. virtualenv .
+#. source bin/activate
+#. pip install -r pip_requirements.txt
+
+Configuration
+-------------
+
+#. Fill local_settings.py (template in local_settings.py.template), set SERVER_ADDRESS as needed
+#. Do manage.py collectstatic and manage.py syncdb
+
+Running
+-------
+
+`python run.py 0:8000`
+
+This will run server which will be listening on all interfaces on port 8000.
+
 
 Notes
 =====
 
 
-* latest gevent-websocket included in libraries directory
-* remember to pull submodule gevent-socketio when cloning or manually later (!). This project will work only with this specific version of gevent-socketio
 * Application has to be run by run.py script because of gevent monkey patching and running gevent-socketio server instead of Django development server
 * Currently website is in Polish, translation in progress ;)
 * shared static files are in static_common directory, all static files have to be collected by manage.py collectstatic command
-* remember to fill local_settings.py file (template in local_settings.py.template file)
+* development version of gevent-socketio (https://github.com/jstasiak/gevent-socketio) is required, pip_requirements.txt should take care of this
 
 
 Author
