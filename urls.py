@@ -11,9 +11,10 @@ urlpatterns = patterns('',
 )
 
 urlpatterns += patterns('',
-    url(r'^socket.io/', 'realtime.views.socketio_handler',),
+    url(r'^socket.io/', include('realtime.urls')),
 )
 
 urlpatterns += patterns('',
     url(r'^(?P<shortcut>.*)$', 'main_page.views.redirection'),
 )
+

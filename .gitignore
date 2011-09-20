@@ -28,3 +28,9 @@ local_settings.py
 
 # Katalog plików statycznych
 static
+
+# virtualenv stuff
+bin
+include
+lib
+lib64
