@@ -1,31 +1,42 @@
 # -*- coding: utf-8 -*-
-class EventDispatcher(object):
-    event_handler_chains = {}
 
-    @classmethod
-    def handler_chain_for_event(class_object, event_name):
-        chains = class_object.event_handler_chains
+class EventDispatcher(object):
+    def __init__(self):
+        self._event_handlers_chains = {}
+
+    def handler_chain_for_event(self, event_name):
+        chains = self._event_handlers_chains
+
         if event_name not in chains:
             chains[event_name] = []
 
         return chains[event_name]
 
-    @classmethod
-    def bind(class_object, event_name, handler):
-        chain = class_object.handler_chain_for_event(event_name)
+    def bind(self, event_name, handler):
+        chain = self.handler_chain_for_event(event_name)
         chain.append(handler)
 
-    @classmethod
-    def unbind(class_object, event_name, handler):
-        chain = class_object.handler_chain_for_event(event_name)
+    def unbind(self, event_name, handler):
+        chain = self.handler_chain_for_event(event_name)
         chain.remove(handler)
 
-    @classmethod
-    def fire(class_object, event):
-        chain = class_object.handler_chain_for_event(event.name)
+    def fire(self, event):
+        chain = self.handler_chain_for_event(event.name)
+
         for handler in chain:
             handler(event)
 
+dispatcher = EventDispatcher()
+
+def on_event(event_name):
+    def factory(func):
+        def decorator(*args, **kwargs):
+            func(*args, **kwargs)
+        dispatcher.bind(event_name, decorator)
+
+        return decorator
+
+    return factory
 
 class Event(object):
     def __init__(self, connection, data):

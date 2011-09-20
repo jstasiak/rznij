@@ -1,21 +1,22 @@
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import print_function, unicode_literals
 
 from django.conf import settings
 from django.core.validators import URLValidator
 
-from .models import Shortcut
-from realtime.events import EventDispatcher
+from realtime.events import on_event
 from realtime.util import failure, success
 
+
+from .models import Shortcut
+
+@on_event('shortcut_availability')
 def handle_shortcut_availability(event):
     shortcut = Shortcut.normalize_shortcut(event.args[0])
     available = Shortcut.is_available(shortcut)
     event.ack(success(available = available))
 
-EventDispatcher.bind('shortcut_availability', handle_shortcut_availability)
-
-
+@on_event('create_shortcut')
 def handle_create_shortcut(event):
     data = event.args[0]
 
@@ -40,9 +41,12 @@ def handle_create_shortcut(event):
     shortcut.save()
     event.ack(success(shortcut_url = 'http://{0}/{1}'.format(settings.SERVER_ADDRESS, shortcut.shortcut)))
 
-EventDispatcher.bind('create_shortcut', handle_create_shortcut)
 
+@on_event('connect')
+def handle_connected(event):
+    print('{0} connected'.format(event.connection.socket.session.session_id))
 
-EventDispatcher.bind('connect', lambda event: print('{0} connected'.format(event.connection.socket.session.session_id)))
-EventDispatcher.bind('disconnect', lambda event: print('{0} disconnected'.format(event.connection.socket.session.session_id)))
+@on_event('disconnect')
+def handle_disconnected(event):
+    print('{0} disconnected'.format(event.connection.socket.session.session_id))
 

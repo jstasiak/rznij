@@ -3,7 +3,7 @@
 from django.http import HttpResponse
 from django.db import transaction
 
-from .events import Event, EventDispatcher
+from .events import dispatcher, Event
 
 @transaction.commit_manually
 def socketio_handler(request):
@@ -56,5 +56,5 @@ class Connection(object):
             self.handle_event(event)
 
     def handle_event(self, event):
-        EventDispatcher.fire(event)
+        dispatcher.fire(event)
 
