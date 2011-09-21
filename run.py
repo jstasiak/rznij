@@ -3,16 +3,7 @@
 from gevent import monkey
 monkey.patch_all()
 
-from os.path import abspath, dirname, join
-PROJECT_ROOT = abspath(dirname(__file__))
-
 import sys
-sys.path.insert(0, join(PROJECT_ROOT, 'libraries'))
-sys.path.insert(0, join(PROJECT_ROOT, 'libraries', 'gevent-socketio'))
-
-from psyco_gevent import make_psycopg_green
-make_psycopg_green()
-
 
 import os
 import traceback
@@ -21,11 +12,9 @@ from django.core.handlers.wsgi import WSGIHandler
 from django.core.signals import got_request_exception
 from django.utils import autoreload
 
-from socketio import SocketIOServer
-
-
-
 os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
+
+from socketio import SocketIOServer
 
 
 def exception_printer(sender, **kwargs):

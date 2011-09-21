@@ -3,22 +3,23 @@ from __future__ import print_function, unicode_literals
 
 from django.conf import settings
 from django.core.validators import URLValidator
+from django.dispatch import receiver
 
-from realtime.events import on_event
+from realtime.signals import socket_connected, socket_disconnected, socket_client_event, socket_client_event_by_type, socket_client_message
 from realtime.util import failure, success
-
 
 from .models import Shortcut
 
-@on_event('shortcut_availability')
-def handle_shortcut_availability(event):
-    shortcut = Shortcut.normalize_shortcut(event.args[0])
+
+@receiver(socket_client_event_by_type['shortcut_availability'])
+def handle_shortcut_availability(sender, request, event, **kwargs):
+    shortcut = Shortcut.normalize_shortcut(event.data[0])
     available = Shortcut.is_available(shortcut)
     event.ack(success(available = available))
 
-@on_event('create_shortcut')
-def handle_create_shortcut(event):
-    data = event.args[0]
+@receiver(socket_client_event_by_type['create_shortcut'])
+def handle_create_shortcut(sender, request, event, **kwargs):
+    data = event.data[0]
 
     shortcut = data.get('shortcut', '')
     if shortcut and not Shortcut.is_available(shortcut):
@@ -42,11 +43,27 @@ def handle_create_shortcut(event):
     event.ack(success(shortcut_url = 'http://{0}/{1}'.format(settings.SERVER_ADDRESS, shortcut.shortcut)))
 
 
-@on_event('connect')
-def handle_connected(event):
-    print('{0} connected'.format(event.connection.socket.session.session_id))
+@receiver(socket_connected)
+def handle_connected(sender, request, **kwargs):
+    socket = sender
+    print('{0} connected'.format(socket.session.session_id))
 
-@on_event('disconnect')
-def handle_disconnected(event):
-    print('{0} disconnected'.format(event.connection.socket.session.session_id))
+@receiver(socket_disconnected)
+def handle_disconnected(sender, request, **kwargs):
+    socket = sender
+    print('{0} disconnected'.format(socket.session.session_id))
+
+@receiver(socket_client_message)
+def handle_message(sender, request, message, **kwargs):
+    socket = sender
+    print('{0} => message {1!r}'.format(socket.session.session_id, message))
+
+
+@receiver(socket_client_event)
+def handle_event(sender, request, event, **kwargs):
+    socket = sender
+    print('{0} => event {1!r} ({2!r})'.format(socket.session.session_id, event.name, event.data))
+
+
+
 
