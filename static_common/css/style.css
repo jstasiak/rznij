@@ -21,42 +21,65 @@ body {
     position: relative;
     margin: 10% auto;
     width: 500px;
-
-    line-height: 2.0em;
-    background-color: #444444;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-   height: 15em; 
-   padding: 10px;
 }
 
 h1 {
     text-align: center;
-    padding: 1em;
+    margin: 1em;
     font-family: 'Orbitron', cursive
 }
 
+#shortcut_form {
+    width: 480px;
+
+    background-color: #444444;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    padding: 25px 10px;
+}
+
 #shortcut_form label {
-    clear: left;
+    clear: both;
     float: left;
     text-align: right;
     display: block;
-    width: 200px;
+    width: 150px;
+    margin-bottom: 0.8em;
 }
 
 #shortcut_form input {
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
-    width: 280px;
+    width: 310px;
     float: right;
+    margin-bottom: 0.8em;
+    clear: right;
 }
 
 input.submit {
+    margin-top: 1em;
     border: 2px outset;
-    width: 12px;
+    margin-bottom: 1em;
 }
 
 
 .error {
     background: red;
+}
+
+.footer {
+    margin-top: 5px;
+    text-align: right;
+    clear: both;
+    font-size: 0.7em;
+    color: #808080;
+}
+
+a {
+    color: lightgray;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
