@@ -2,8 +2,13 @@
     if(!window.console)
         window.console = {};
 
-    if(!window.console.log)
-        window.console.log = function() {};
+    var functions = ['log', 'dir', 'warn'];
+    for(var index in functions) {
+        var name = functions[index];
+        if(!window.console[name]) {
+            window.console[name] = function() {};
+        }
+    }
 
     socket = io.connect(null, { transports: ['flashsocket', 'xhr-polling'] });
     socket.on('connect', function() {
