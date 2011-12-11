@@ -8,7 +8,8 @@
 
 	<script src="{{ STATIC_URL }}js/external/jquery-1.6.2.min.js"></script>
 	<script src="{{ STATIC_URL }}js/external/jquery-namespace.js"></script>
-	<script src="{{ STATIC_URL }}js/external/socket.io-0.8.4.js"></script>
+    {% load socketio_extras %}
+    {% socketio_client_script %}
 
 
 	<script src="{{ STATIC_URL }}js/app.js" type="text/javascript"></script>

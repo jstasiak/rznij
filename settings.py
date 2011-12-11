@@ -128,6 +128,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
 
     'main_page',
+    'realtime',
 )
 
 # A sample logging configuration. The only tangible logging

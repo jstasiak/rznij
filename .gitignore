@@ -1,36 +1,31 @@
-# Skompilowane pliki tłumaczeń
 *.mo
 
-# Skompilowane pliki pythona
 *.pyc
 
-# Vi swap file
 *.swp
+*.swo
 
-# Pliki tagów
 TAGS
 tags
 
-# Ustawienia lokalne
 local_settings.py
 
-# Śmieci po merge'ach
 *.orig
+*.rej
 
-# Baza danych
 *.sqlite3
 
-# Katalogi i pliki projektów różnych edytorów
 .idea
 .project
 .pydevproject
 .settings
 
-# Katalog plików statycznych
-static
+/static
 
-# virtualenv stuff
-bin
-include
-lib
-lib64
+/bin
+/include
+/lib
+/lib64
+
+
+/build

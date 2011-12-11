@@ -6,6 +6,8 @@ from django.template import RequestContext
 
 from .models import Shortcut
 
+from time import sleep
+
 def index(request):
     context = RequestContext(request, {})
     return render_to_response('layout.html', context_instance = context)
