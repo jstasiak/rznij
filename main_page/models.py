@@ -7,7 +7,7 @@ from django.core.validators import URLValidator
 from django.db import models
 
 class Shortcut(models.Model):
-    shortcut = models.TextField(unique = True, db_index = True)
+    shortcut = models.TextField(unique = True, db_index = True, blank = True)
     url = models.TextField(db_index = True, validators = [URLValidator])
     created_at = models.DateTimeField(auto_now_add = True, db_index = True)
     use_count = models.IntegerField(default = 0, db_index = True)

@@ -13,13 +13,13 @@ from .models import Shortcut
 
 @receiver(socket_client_event_by_type['shortcut_availability'])
 def handle_shortcut_availability(sender, request, event, **kwargs):
-    shortcut = Shortcut.normalize_shortcut(event.data[0])
+    shortcut = Shortcut.normalize_shortcut(event.args[0])
     available = Shortcut.is_available(shortcut)
     event.ack(success(available = available))
 
 @receiver(socket_client_event_by_type['create_shortcut'])
 def handle_create_shortcut(sender, request, event, **kwargs):
-    data = event.data[0]
+    data = event.args[0]
 
     shortcut = data.get('shortcut', '')
     if shortcut and not Shortcut.is_available(shortcut):
@@ -57,13 +57,6 @@ def handle_disconnected(sender, request, **kwargs):
 def handle_message(sender, request, message, **kwargs):
     socket = sender
     print('{0} => message {1!r}'.format(socket.session.session_id, message))
-
-
-@receiver(socket_client_event)
-def handle_event(sender, request, event, **kwargs):
-    socket = sender
-    print('{0} => event {1!r} ({2!r})'.format(socket.session.session_id, event.name, event.data))
-
 
 
 

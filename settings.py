@@ -159,6 +159,8 @@ SERVER_ADDRESS = 'rznij.net'
 
 SECRET_KEY = None
 SERVER_ADDRESS = 'localhost:8000'
+LISTEN_HOST = 'localhost'
+LISTEN_PORT = 8000
 
 LOCAL_SETTINGS_FILE = join(PROJECT_ROOT, 'local_settings.py')
 

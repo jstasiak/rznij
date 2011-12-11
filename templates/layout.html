@@ -8,7 +8,7 @@
 
 	<script src="{{ STATIC_URL }}js/external/jquery-1.6.2.min.js"></script>
 	<script src="{{ STATIC_URL }}js/external/jquery-namespace.js"></script>
-    {% load socketio_extras %}
+    {% load socketio %}
     {% socketio_client_script %}
 
 
@@ -20,6 +20,7 @@
 <body>
 
 <div id="container">
+    <h1>rznij.net</h1>
     <form id="shortcut_form">
         <label for="url">Adres</label>
         <input id="url">
@@ -27,9 +28,7 @@
         <label for="shortcut">Skrót (opcjonalny)</label>
         <input id="shortcut">
         <br>
-        <p class="submit">
-            <input type="submit" value="Rznij">
-        </p>
+        <input class="submit" type="submit" value="Rznij">
         <br>
         <label for="shortcut_url">Skrócony adres</label>
         <input id="shortcut_url" disabled>

@@ -1,30 +1,61 @@
+@import url(http://fonts.googleapis.com/css?family=Orbitron:900,400);
+
+
 * {
-    font-family: Verdana;
+    font-family: Helvetica;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background: #333333;
+    text-align: center;
+    color: white;
+}
+
+#container {
+    position: relative;
+    margin: 10% auto;
+    width: 500px;
+
+    line-height: 2.0em;
+    background-color: #444444;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+   height: 15em; 
+   padding: 10px;
+}
+
+h1 {
+    text-align: center;
+    padding: 1em;
+    font-family: 'Orbitron', cursive
 }
 
 #shortcut_form label {
-    width: 12em;
+    clear: left;
     float: left;
     text-align: right;
-    margin-right: 0.5em;
     display: block;
+    width: 200px;
 }
 
 #shortcut_form input {
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
-    width: 20em;
+    width: 280px;
+    float: right;
 }
 
-
-#shortcut_form p.submit {
-    margin-left: 12.5em;
+input.submit {
+    border: 2px outset;
+    width: 12px;
 }
 
-#container {
-    width: 600px;
-    margin: 0 auto;
-}
 
 .error {
     background: red;
