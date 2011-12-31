@@ -26,19 +26,19 @@ Configuration
 Running
 -------
 
-`python run.py 0:8000`
+`python manage.py rungevent 0:8000`
 
-This will run server which will be listening on all interfaces on port 8000.
+This will run server which will be listening on all your network interfaces on port 8000.
 
 
 Notes
 =====
 
 
-* Application has to be run by run.py script because of gevent monkey patching and running gevent-socketio server instead of Django development server
+* Application has to be run by manage.py rungevent because of gevent monkey patching and running gevent-socketio server instead of Django development server
 * Currently website is in Polish, translation in progress ;)
 * shared static files are in static_common directory, all static files have to be collected by manage.py collectstatic command
-* development version of gevent-socketio (https://github.com/jstasiak/gevent-socketio) is required, pip_requirements.txt should take care of this
+* development version (hg/develop branch) of gevent-socketio (https://github.com/jstasiak/gevent-socketio) is required, pip_requirements.txt should take care of this
 
 
 Author
