@@ -1,5 +1,5 @@
 gevent
 django
 psycopg2
-git+https://github.com/jstasiak/gevent-socketio.git@hg/develop
+git+https://github.com/jstasiak/gevent-socketio.git@old
 git+https://github.com/jstasiak/django-realtime.git
