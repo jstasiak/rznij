@@ -9,13 +9,22 @@ Introduction
 Setup environment
 -----------------
 
-#. git clone git://github.com/jstasiak/rznij.git
-#. easy_install pip
-#. pip install virtualenv
-#. cd rznij
-#. virtualenv .
-#. source bin/activate
-#. pip install -r pip_requirements.txt
+System wide (as root)::
+
+  easy_install pip
+  pip install virtualenv
+
+Project specific (as ordinary user)::
+
+  mkdir rznij_ve
+  cd rznij_ve
+  mkdir ve
+  virtualenv ve
+  source ve/bin/activate
+  git clone git://github.com/jstasiak/rznij.git
+  cd rznij
+  pip install -r pip_requirements.txt
+
 
 Configuration
 -------------
