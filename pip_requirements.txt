@@ -1,4 +1,4 @@
 gevent
 django
-git+https://github.com/jstasiak/gevent-socketio.git@old
+git+https://github.com/jstasiak/gevent-socketio.git@8835a91dffba4447564ffa30df95663a13e1997e
 git+https://github.com/jstasiak/django-realtime.git
